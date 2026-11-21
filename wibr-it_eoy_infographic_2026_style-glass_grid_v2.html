@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIBR-IT — Year in Numbers 2026 (Glass Grid v2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:linear-gradient(135deg,#0f0c29 0%,#302b63 50%,#24243e 100%); color:#fff; min-height:100vh; padding:48px 20px; }
+  .page { max-width:1180px; margin:0 auto; }
+  .hero { text-align:center; padding:40px 0 48px; }
+  .hero .kicker { font-size:0.85rem; letter-spacing:0.2em; text-transform:uppercase; color:#a78bfa; margin-bottom:12px; }
+  .hero h1 { font-size:clamp(2.6rem,7vw,4.6rem); font-weight:800; letter-spacing:-0.03em; line-height:1.05; }
+  .hero .lead { color:rgba(255,255,255,0.7); font-size:1.1rem; margin-top:12px; max-width:640px; margin-left:auto; margin-right:auto; }
+  .hero .big { margin-top:32px; }
+  .hero .big .v { font-size:clamp(3.5rem,11vw,7rem); font-weight:800; letter-spacing:-0.04em; background:linear-gradient(90deg,#a78bfa,#60a5fa); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hero .big .t { color:rgba(255,255,255,0.6); font-size:1rem; margin-top:6px; }
+  .glass { background:rgba(255,255,255,0.08); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.15); border-radius:16px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; margin-top:40px; }
+  .group-label { grid-column:1 / -1; font-size:0.75rem; letter-spacing:0.18em; text-transform:uppercase; color:#a78bfa; font-weight:600; padding:8px 4px 0; }
+  .tile { padding:22px 20px; }
+  .tile .v { font-size:1.9rem; font-weight:700; letter-spacing:-0.02em; }
+  .tile .v .u { font-size:0.62em; opacity:0.8; margin-left:3px; }
+  .tile .l { color:rgba(255,255,255,0.6); font-size:0.8rem; margin-top:6px; text-transform:uppercase; letter-spacing:0.08em; }
+  .tile .n { color:#a78bfa; font-size:0.75rem; margin-top:4px; }
+  .tile.accent1 .v { color:#a78bfa; }
+  .tile.accent2 .v { color:#60a5fa; }
+  .tile.accent3 .v { color:#34d399; }
+  .tile.accent4 .v { color:#f472b6; }
+  .tile.accent5 .v { color:#fbbf24; }
+  .themes { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:24px; }
+  .theme { padding:22px 20px; }
+  .theme h3 { font-size:1rem; font-weight:600; margin-bottom:8px; }
+  .theme ul { list-style:none; font-size:0.85rem; color:rgba(255,255,255,0.7); }
+  .theme li { padding:3px 0; display:flex; justify-content:space-between; }
+  .theme li span { color:#fff; font-weight:600; }
+  .footer { margin-top:48px; text-align:center; color:rgba(255,255,255,0.5); font-size:0.8rem; line-height:1.7; }
+  .footer strong { color:rgba(255,255,255,0.8); }
+  @media (prefers-reduced-motion: reduce){ * { transition:none !important; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <section class="hero" aria-labelledby="title">
+    <div class="kicker">WIBR · Department of Information Technology</div>
+    <h1 id="title">Year in Numbers</h1>
+    <p class="lead">Infrastructure, security, and service that keep research moving.</p>
+    <div class="big" aria-label="10,166,338 Slurm jobs processed"><div class="v">10,166,338</div><div class="t">Slurm jobs processed across the cluster</div></div>
+  </section>
+  <div class="grid" role="list">
+    <div class="tile glass accent1" role="listitem" aria-label="Data managed 5.3 PB"><div class="v">5.3<span class="u">PB</span></div><div class="l">Data managed</div><div class="n">+23.26% YoY</div></div>
+    <div class="tile glass accent1" role="listitem" aria-label="Compute users 227"><div class="v">227</div><div class="l">Compute users</div><div class="n">+11.27% YoY</div></div>
+    <div class="tile glass accent1" role="listitem" aria-label="Web apps 90"><div class="v">90</div><div class="l">Web apps</div><div class="n">Research enablement</div></div>
+
+    <div class="tile glass accent2" role="listitem" aria-label="GPU compute 748.5 TFLOPS"><div class="v">748.5<span class="u">TFLOPS</span></div><div class="l">GPU compute</div><div class="n">28 GPUs</div></div>
+    <div class="tile glass accent2" role="listitem" aria-label="CUDA cores 211968"><div class="v">211,968</div><div class="l">CUDA cores</div><div class="n">Concurrent workloads</div></div>
+    <div class="tile glass accent2" role="listitem" aria-label="GPU memory 1196 GB"><div class="v">1,196<span class="u">GB</span></div><div class="l">GPU memory</div><div class="n">Memory-intensive</div></div>
+    <div class="tile glass accent2" role="listitem" aria-label="CPU cores 4692"><div class="v">4,692</div><div class="l">CPU cores</div><div class="n">Available</div></div>
+    <div class="tile glass accent2" role="listitem" aria-label="Memory 43 TB"><div class="v">43<span class="u">TB</span></div><div class="l">Memory deployed</div><div class="n">Large-scale workloads</div></div>
+    <div class="tile glass accent2" role="listitem" aria-label="Critical uptime 99.9 percent"><div class="v">99.9<span class="u">%</span></div><div class="l">Critical uptime</div><div class="n">2.6 h downtime</div></div>
+
+    <div class="tile glass accent3" role="listitem" aria-label="Security breaches 0"><div class="v">0</div><div class="l">Security breaches</div><div class="n">100% compliance</div></div>
+    <div class="tile glass accent3" role="listitem" aria-label="Security trainings 714"><div class="v">714</div><div class="l">Security trainings</div><div class="n">457 phishing reported</div></div>
+
+    <div class="tile glass accent4" role="listitem" aria-label="Tickets resolved 3790"><div class="v">3,790</div><div class="l">Tickets resolved</div><div class="n">11.35 / day</div></div>
+    <div class="tile glass accent4" role="listitem" aria-label="Catalog requests 1081"><div class="v">1,081</div><div class="l">Catalog requests</div><div class="n">+15.5% YoY</div></div>
+    <div class="tile glass accent4" role="listitem" aria-label="User rating 5 of 5"><div class="v">5<span class="u">/5</span></div><div class="l">User rating</div><div class="n">+0.02 YoY</div></div>
+  </div>
+  <div class="themes">
+    <div class="theme glass"><h3>Core Infrastructure</h3><ul><li>Data managed <span>5.3 PB</span></li><li>GPU compute <span>748.5 TFLOPS</span></li><li>Uptime <span>99.9%</span></li></ul></div>
+    <div class="theme glass"><h3>HPC Cluster</h3><ul><li>CPU cores <span>4,692</span></li><li>GPU (CUDA) cores <span>211,968</span></li><li>Memory <span>43 TB</span></li><li>GPU memory <span>1,196 GB</span></li></ul></div>
+    <div class="theme glass"><h3>Research Usage</h3><ul><li>Web apps <span>90</span></li><li>Compute users <span>227</span></li><li>Slurm jobs <span>10.2M</span></li></ul></div>
+    <div class="theme glass"><h3>Security</h3><ul><li>Breaches <span>0</span></li><li>Trainings <span>714</span></li><li>Phishing reported <span>457</span></li></ul></div>
+    <div class="theme glass"><h3>Service Desk</h3><ul><li>Tickets resolved <span>3,790</span></li><li>Catalog requests <span>1,081</span></li><li>User rating <span>5/5</span></li></ul></div>
+  </div>
+  <div class="footer">
+    <strong>Empowering Research Through Technology</strong><br>
+    WIBR-IT · Whitehead Institute for Biomedical Research · 2026
+  </div>
+</div>
+</body>
+</html>
