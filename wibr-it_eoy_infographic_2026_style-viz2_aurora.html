@@ -101,24 +101,17 @@
       const eased = 1 - Math.pow(1 - t, 3);
       const val = target * eased;
       const formatted = target % 1 === 0 ? Math.round(val).toLocaleString() : val.toFixed(1);
-      if (suffix) {
-        el.innerHTML = formatted + '<span class="u">' + suffix + '</span>';
-      } else {
-        el.textContent = formatted;
-      }
+      if (suffix) el.innerHTML = formatted + '<span class="u">' + suffix + '</span>';
+      else el.textContent = formatted;
       if (t < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   }
   if (!reducedMotion) {
     const heroNum = document.querySelector('.hero .big .v');
-    if (heroNum) setTimeout(() => countUp(heroNum, 2200), 200);
-    document.querySelectorAll('.tile .v').forEach((el, i) => setTimeout(() => countUp(el, 1800), i * 100));
-    const themeEls = document.querySelectorAll('.theme li span');
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { countUp(e.target, 1500); obs.unobserve(e.target); } });
-    }, { threshold: 0.5 });
-    themeEls.forEach(el => obs.observe(el));
+    if (heroNum) countUp(heroNum, 2200);
+    document.querySelectorAll('.tile .v').forEach(el => countUp(el, 1800));
+    document.querySelectorAll('.theme li span').forEach(el => countUp(el, 1500));
   }
 </script>
 </body>
