@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIBR-IT — Year in Numbers 2026 (Viz2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#0f172a; --muted:#475569; --bg:#0b1020; --card:#111830; --border:#1f2a4a; --accent:#6366f1; --a2:#22d3ee; --a3:#f472b6; --a4:#fbbf24; --a5:#34d399; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:linear-gradient(135deg,#0f0c29 0%,#302b63 50%,#24243e 100%); color:#fff; padding:40px 20px; }
+  .page { max-width:1200px; margin:0 auto; }
+  .hero { padding:32px 0; text-align:center; }
+  .hero .kicker { font-size:0.8rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--a2); margin-bottom:8px; }
+  .hero h1 { font-size:clamp(2.4rem,6vw,4rem); font-weight:800; letter-spacing:-0.03em; }
+  .hero .lead { color:var(--muted); font-size:1rem; margin-top:8px; }
+  .section { margin-top:56px; }
+  .section h2 { font-size:1.2rem; font-weight:700; margin-bottom:4px; }
+  .section .sub { color:var(--muted); font-size:0.9rem; margin-bottom:24px; }
+  /* Hero donut */
+  .hero-chart { display:flex; align-items:center; justify-content:center; gap:48px; flex-wrap:wrap; margin-top:32px; }
+  .donut-big { width:260px; height:260px; border-radius:50%; background:conic-gradient(var(--accent) 0% 22%, var(--a2) 22% 42%, var(--a3) 42% 58%, var(--a4) 58% 74%, var(--a5) 74% 100%); position:relative; box-shadow:0 0 60px rgba(99,102,241,0.3); }
+  .donut-big::after { content:''; position:absolute; inset:40px; background:var(--bg); border-radius:50%; }
+  .donut-big .center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:2; }
+  .donut-big .center .v { font-size:2.2rem; font-weight:800; letter-spacing:-0.03em; }
+  .donut-big .center .l { font-size:0.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; margin-top:4px; }
+  .legend { list-style:none; font-size:0.9rem; }
+  .legend li { display:flex; align-items:center; gap:10px; padding:6px 0; }
+  .legend .dot { width:12px; height:12px; border-radius:3px; }
+  .legend .pct { color:var(--muted); font-size:0.8rem; margin-left:auto; }
+  /* KPIs */
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:24px; }
+  .kpi { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; position:relative; overflow:hidden; }
+  .kpi::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--grad, var(--accent)); }
+  .kpi:nth-child(1)::before { background:var(--accent); }
+  .kpi:nth-child(2)::before { background:var(--a2); }
+  .kpi:nth-child(3)::before { background:var(--a3); }
+  .kpi:nth-child(4)::before { background:var(--a4); }
+  .kpi:nth-child(5)::before { background:var(--a5); }
+  .kpi .v { font-size:1.9rem; font-weight:800; letter-spacing:-0.02em; line-height:1; }
+  .kpi .l { color:var(--muted); font-size:0.75rem; margin-top:6px; text-transform:uppercase; letter-spacing:0.08em; }
+  .kpi .n { color:var(--a2); font-size:0.72rem; margin-top:4px; font-weight:500; }
+  /* Big bars */
+  .bigbars { display:grid; gap:14px; }
+  .bigbar { display:grid; grid-template-columns:180px 1fr 80px; gap:14px; align-items:center; }
+  .bigbar .label { font-size:0.9rem; color:#fff; }
+  .bigbar .track { height:24px; background:#1a2040; border-radius:12px; overflow:hidden; border:1px solid var(--border); }
+  .bigbar .fill { height:100%; border-radius:12px; width:0; transition:width 1.2s cubic-bezier(0.4,0,0.2,1); display:flex; align-items:center; padding-left:10px; font-size:0.7rem; font-weight:600; color:#fff; }
+  .bigbar .val { font-size:0.85rem; color:var(--muted); text-align:right; font-weight:600; }
+  /* storage (blue) */
+  /* storage (purple) */
+  .bigbar:nth-child(1) .fill, .bigbar:nth-child(5) .fill, .bigbar:nth-child(7) .fill { background:linear-gradient(90deg,#a78bfa,#c4b5fd); }
+  /* compute (blue) */
+  .bigbar:nth-child(2) .fill, .bigbar:nth-child(4) .fill, .bigbar:nth-child(6) .fill { background:linear-gradient(90deg,#60a5fa,#93c5fd); }
+  /* people (green) */
+  .bigbar:nth-child(3) .fill { background:linear-gradient(90deg,#34d399,#6ee7b7); }
+  .themes { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:16px; }
+  .theme { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; }
+  .theme h3 { font-size:0.9rem; font-weight:600; margin-bottom:8px; }
+  .theme ul { list-style:none; font-size:0.82rem; color:var(--muted); }
+  .theme li { padding:3px 0; display:flex; justify-content:space-between; }
+  .theme li span { color:#fff; font-weight:600; }
+  .footer { margin-top:56px; text-align:center; color:var(--muted); font-size:0.8rem; }
+  @media (prefers-reduced-motion: reduce){ .bigbar .fill{transition:none;} }
+  @media (max-width:640px){ .bigbar{grid-template-columns:1fr;} .bigbar .val{text-align:left;} }
+</style>
+</head>
+<body>
+<div class="page">
+  <section class="hero">
+    <div class="kicker">Department of Information Technology · 2026</div>
+    <h1>Year in Numbers</h1>
+    <p class="lead">Infrastructure, security, and service that keep research moving.</p>
+  
+  </section>
+
+  <section class="section">
+    <h2>Headline Metrics</h2>
+    <p class="sub">The numbers that matter most.</p>
+    <div class="kpis">
+      <div class="kpi"><div class="v">10.2M</div><div class="l">Slurm jobs</div><div class="n">Throughput</div></div>
+      <div class="kpi"><div class="v">5.3 PB</div><div class="l">Data managed</div><div class="n">+23.26%</div></div>
+      <div class="kpi"><div class="v">99.9%</div><div class="l">Uptime</div><div class="n">2.6 h downtime</div></div>
+      <div class="kpi"><div class="v">3,790</div><div class="l">Tickets resolved</div><div class="n">11.35 / day</div></div>
+      <div class="kpi"><div class="v">5/5</div><div class="l">User rating</div><div class="n">+0.02</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Capacity at a Glance</h2>
+    <p class="sub">Relative scale of infrastructure capacity.</p>
+    <div class="bigbars">
+      <div class="bigbar"><div class="label">Data managed</div><div class="track"><div class="fill" data-w="100">5.3 PB</div></div></div>
+      <div class="bigbar"><div class="label">CUDA cores</div><div class="track"><div class="fill" data-w="88">211,968</div></div></div>
+      <div class="bigbar"><div class="label">Slurm jobs</div><div class="track"><div class="fill" data-w="100">10,166,338</div></div></div>
+      <div class="bigbar"><div class="label">CPU cores</div><div class="track"><div class="fill" data-w="30">4,692</div></div></div>
+      <div class="bigbar"><div class="label">Cluster memory</div><div class="track"><div class="fill" data-w="69">43 TB</div></div></div>
+      <div class="bigbar"><div class="label">GPU compute</div><div class="track"><div class="fill" data-w="54">748.5 TFLOPS</div></div></div>
+      <div class="bigbar"><div class="label">GPU memory</div><div class="track"><div class="fill" data-w="20">1,196 GB</div></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>By Theme</h2>
+    <div class="themes">
+      <div class="theme"><h3>Core Infrastructure</h3><ul><li>Data managed <span>5.3 PB</span></li><li>GPU compute <span>748.5 TFLOPS</span></li><li>Uptime <span>99.9%</span></li></ul></div>
+      <div class="theme"><h3>HPC Cluster</h3><ul><li>CPU cores <span>4,692</span></li><li>CUDA cores <span>211,968</span></li><li>Memory <span>43 TB</span></li><li>GPU memory <span>1,196 GB</span></li></ul></div>
+      <div class="theme"><h3>Research Usage</h3><ul><li>Web apps <span>90</span></li><li>Compute users <span>227</span></li><li>Slurm jobs <span>10.2M</span></li></ul></div>
+      <div class="theme"><h3>Security</h3><ul><li>Breaches <span>0</span></li><li>Trainings <span>714</span></li><li>Phishing reported <span>457</span></li></ul></div>
+      <div class="theme"><h3>Service Desk</h3><ul><li>Tickets <span>3,790</span></li><li>Catalog <span>1,081</span></li><li>Rating <span>5/5</span></li></ul></div>
+    </div>
+  </section>
+
+  <div class="footer">Empowering research through technology · WIBR-IT · 2026</div>
+</div>
+<script>
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Generic count-up: animates the leading number in an element, preserving any trailing text/unit.
+  function countUp(el, duration) {
+    const original = el.textContent.trim();
+    const m = original.match(/^([\d,]+\.?\d*)(.*)$/);
+    if (!m) return;
+    const target = parseFloat(m[1].replace(/,/g, ''));
+    if (isNaN(target)) return;
+    const suffix = m[2];
+    const start = performance.now();
+    function step(now) {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const val = target * eased;
+      const formatted = target % 1 === 0 ? Math.round(val).toLocaleString() : val.toFixed(1);
+      el.textContent = formatted + suffix;
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  if (!reducedMotion) {
+    // Animate headline KPI numbers on load
+    document.querySelectorAll('.kpi .v').forEach((el, i) => {
+      setTimeout(() => countUp(el, 1200), i * 120);
+    });
+    // Animate theme numbers when they enter view
+    const themeEls = document.querySelectorAll('.theme li span, .bigbar .val');
+    const tObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          countUp(e.target, 1000);
+          tObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    themeEls.forEach(el => tObs.observe(el));
+
+    const fills = document.querySelectorAll('.bigbar .fill');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          fills.forEach(f => { f.style.width = (f.dataset.w || 0) + '%'; });
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    const c = document.querySelector('.bigbars');
+    if (c) obs.observe(c);
+  } else {
+    document.querySelectorAll('.bigbar .fill').forEach(f => { f.style.width = (f.dataset.w || 0) + '%'; });
+  }
+</script>
+</body>
+</html>
